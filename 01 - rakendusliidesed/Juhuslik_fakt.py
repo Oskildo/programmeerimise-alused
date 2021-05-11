@@ -1,33 +1,30 @@
 import requests
-from easygui import *  
+from easygui import *
+def huvitav_fakt(aadress):
+    päring = requests.get(aadress)
+    andmed = päring.json()
+    msgbox(andmed['text'])
 aadress = "https://cat-fact.herokuapp.com/facts/random" 
-päring = requests.get(aadress)
-andmed = päring.json()
 valikud =["jah", "ei"]
 valik = ["jah, tahan veel ühte","ei, aitab küll"]
 kordus = 1
 i = 0
-
+Esimene_kord = True
 while i < kordus:
-    answer = buttonbox("Would you like to know something interesting?", choices = valikud)
+    answer = buttonbox("Kas tahad teada midagi huvitavat?", choices = valikud)
     if answer == "jah":
-        päring = requests.get(aadress)
-        andmed = päring.json()
-        msgbox(andmed['text'])
-        i = i + 1
-        kordus = kordus + 1
+        huvitav_fakt(aadress)
         answer = buttonbox("Tahad veel ühte fakti?", choices = valik)
+        Esimene_kord = False
         if answer == "jah, tahan veel ühte":
-            päring = requests.get(aadress)
-            andmed = päring.json()
-            msgbox(andmed['text'])
-            i = i + 1
-            kordus = kordus + 1
-                
+            huvitav_fakt(aadress)             
         else:
             msgbox("Kena päeva!")
             break
+    elif Esimene_kord == True:
+        msgbox("Kurb lugu. Saad ikka teada.")
+        huvitav_fakt(aadress)
+        break
     else:
-        msgbox("Kurb lugu.")
-        msgbox(andmed['text'])
+        msgbox("Kena päeva!")
         break
