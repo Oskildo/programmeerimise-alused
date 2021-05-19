@@ -14,26 +14,49 @@ class MyClient(discord.Client):
         if message.content.lower() == "võistleme":
             await message.channel.send('olgu, vali oma rünnakut; :scissors: , :rock: or :newspaper:')
             võistlus = [":scissors:", ":rock:", ":newspaper:"]
-            while True:
-                Roboti_valik = randint(1,3)
-                if Roboti_valik == 1:
-                    valik = ":scissors:"
-                elif Roboti_valik == 2:
-                    valik = ":rock:"
-                else:
-                    valik = ":newspaper:"
-                await message.content
-                if message.content.lower() == ":scissors:":
-                    pass
-                elif message.content.lower() == ":rock:":
-                    pass
-                elif message.content.lower() == ":newspaper:":
-                    pass
-                else:
-                    await message.channel.send('Sa ei mängi õigesti. Head aega.')
-                    break
+            Roboti_valik = randint(1,3)
+            if Roboti_valik == 1:
+                valik = ":scissors:"
+            elif Roboti_valik == 2:
+                valik = ":rock:"
+            else:
+                valik = ":newspaper:"
+            # MAke the BOt Wait
+            if message.content.lower() == ":scissors:":
+                võistlus = ":scissors:"
+                await message.channel.send(valik)
+                if võistlus == valik:
+                    await message.channel.send("Viik. ")
+                if valik == ":rock:":
+                    await message.channel.send("Ma võitsin. :) ")
+                if valik == ":newspaper:":
+                    await message.channel.send("Ma kaotasin. :( ")
+            elif message.content.lower(valik) == ":rock:":
+                await message.channel.send(valik)
+                võistlus = ":rock:"
+                if võistlus == valik:
+                    await message.channel.send("Viik. :( ")
+                if valik == ":newspaper:":
+                    await message.channel.send("Ma võitsin. :) ")
+                if valik == ":scissors:":
+                        await message.channel.send("Ma kaotasin. :( ")
+
+            elif message.content.lower(valik) == ":newspaper:":
+                await message.channel.send(valik)
+                võistlus = ":newspaper:"
+                if võistlus == valik:
+                    await message.channel.send("Viik. :( ")
+                if valik == ":scissors:":
+                    await message.channel.send("Ma võitsin. :) ")
+                if valik == ":rock:":
+                        await message.channel.send("Ma kaotasin. :( ")
+
+
+            elif (message.content.lower() != ":scissors:" or message.content.lower() != ":rock:" or message.content.lower() != ":rock:"):
+                await message.channel.send('Sa ei mängi õigesti. Head aega.')
+                
     
             
 
 client = MyClient()
-client.run("ODQ0MzA3MDczODQzNDYyMTc0.YKQgPA.bD4qj5IrmiB_93UKBhisLtTq96Q")
+client.run("zHM3Hf2Xpe47D8sw2ls2P6yuMTHgrAYE")
