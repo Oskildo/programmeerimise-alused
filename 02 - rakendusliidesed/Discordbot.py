@@ -59,4 +59,4 @@ class MyClient(discord.Client):
             
 
 client = MyClient()
-client.run("zHM3Hf2Xpe47D8sw2ls2P6yuMTHgrAYE")
+client.run("token lol")
