@@ -24,11 +24,12 @@ ekraan.blit(tekst, ((dog_x+100), (dog_y+30)))
 pygame.display.flip()
 time.sleep(2)
 kell = pygame.time.Clock()
-while True:
+mäng_käib= True
+while mäng_käib:
     dt = kell.tick(60)
     sisend = pygame.event.poll()
     if sisend.type == pygame.QUIT:
-        break
+        mäng_käib = False
     ekraan.fill((128, 255, 212))
     ekraan.blit(dog, (dog_x, dog_y))
     ekraan.blit(kont, (1700, 800))
