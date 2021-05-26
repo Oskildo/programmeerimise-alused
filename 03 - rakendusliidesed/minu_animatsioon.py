@@ -24,7 +24,6 @@ ekraan.blit(tekst, ((dog_x+100), (dog_y+30)))
 pygame.display.flip()
 time.sleep(2)
 kell = pygame.time.Clock()
-print(dog_y)
 while True:
     dt = kell.tick(60)
     sisend = pygame.event.poll()
