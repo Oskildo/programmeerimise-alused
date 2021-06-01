@@ -44,4 +44,8 @@ while True:
         pygame.display.flip()
         time.sleep(2)
         pygame.quit()
+<<<<<<< Updated upstream
 pygame.quit()
+=======
+pygame.quit()
+>>>>>>> Stashed changes
