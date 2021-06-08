@@ -2,8 +2,8 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 @app.route("/")
 def index():
-    esinumber =request.args.get("esinumber", default = 1, type= int)
-    teinenumber = request.args.get("teinenumber", default = 1, type= int)
+    esinumber =request.args.get("esinumber", default = 1, type= float)
+    teinenumber = request.args.get("teinenumber", default = 1, type= float)
     tüüp =request.args.get("tüüp", default = "")
     arv = 1
     if tüüp == "+":
