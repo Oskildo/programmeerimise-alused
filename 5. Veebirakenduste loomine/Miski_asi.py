@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
+
 @app.route("/")
 def index():
     esinumber =request.args.get("esinumber", default = 1, type= float)
@@ -14,6 +15,11 @@ def index():
         arv = esinumber * teinenumber
     elif tüüp == "/":
         arv = esinumber / teinenumber
+    elif tüüp == "√":
+        arv = esinumber ** (1/teinenumber)
+    elif tüüp == "^":
+        arv = esinumber ** teinenumber
+        
     #Kui tahad midagi siia lisada, siis üldvalem on järgmine
     #elif tüüp == "x": (x = märk)
     #    arv = esinumber x teinenumber x = märk või valem
