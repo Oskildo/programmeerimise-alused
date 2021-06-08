@@ -3,21 +3,28 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 @app.route("/")
 def index():
-    miinimum =request.args.get("miinimum", default = 1, type= int)
-    maksimum = request.args.get("maksimum", default = 100, type= int)
-    kogus = request.args.get("kogus", default = 1, type= int)
-    if kogus < 0:
-        kogus = 0
-    n = kogus
-    arv = []
-    while n != 0:
-        arv +=[random.randint(miinimum, maksimum)]
-        n -=1
+    esinumber =request.args.get("esinumber", default = 1, type= int)
+    teinenumber = request.args.get("teinenumber", default = 1, type= int)
+    tüüp =request.args.get("tüüp", default = "")
+    arv = 1
+    if tüüp == "+":
+        arv = esinumber + teinenumber
+    elif tüüp == "-":
+        arv = esinumber - teinenumber
+    elif tüüp == "*":
+        arv = esinumber * teinenumber
+    elif tüüp == "/":
+        arv = esinumber / teinenumber
+    #Kui tahad midagi siia lisada, siis üldvalem on järgmine
+    #elif tüüp == "x": (x = märk)
+    #    arv = esinumber x teinenumber x = märk või valem
+    
+    esinumber = arv
     return render_template("index.html",
-                           arv=arv,
-                           miinimum =  miinimum,  
-                           maksimum = maksimum,
-                           kogus = kogus
+                          arv=arv,
+                           esinumber =  esinumber,  
+                           teinenumber = teinenumber,
+                           tüüp = tüüp
                         )
  
 if __name__ == "__main__":
